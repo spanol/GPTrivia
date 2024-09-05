@@ -3,31 +3,117 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --primary-red: #b71c1c;
+  --standard-red: #d32f2f;
+  --light-red: #e57373;
+  --coral-red: #ff8a80;
+  --dark-gray: #212121;
+  --medium-gray: #757575;
+  --light-gray: #e0e0e0;
+  --white: #ffffff;
+  --alert-red: #f44336;
+  --success-green: #388e3c;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 32px;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.small-spacing {
+  padding: 8px;
+  margin: 8px;
+}
+
+.medium-spacing {
+  padding: 16px;
+  margin: 16px;
+}
+
+.large-spacing {
+  padding: 24px;
+  margin: 24px;
+}
+
+.button-primary {
+  background-color: var(--standard-red);
+  color: var(--white);
+  border: none;
+  padding: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+  background-color: var(--primary-red);
+}
+
+.button-secondary {
+  background-color: var(--white);
+  color: var(--standard-red);
+  border: 2px solid var(--standard-red);
+  padding: 16px;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.button-secondary:hover {
+  color: var(--light-red);
+  border-color: var(--light-red);
+}
+
+input {
+  border: 1px solid var(--standard-red);
+  padding: 8px;
+  color: var(--dark-gray);
+}
+
+input:focus {
+  border: 2px solid var(--primary-red);
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--medium-gray);
+}
+
+label {
+  color: var(--primary-red);
+  font-weight: bold;
+}
+
+.card {
+  background-color: var(--white);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--light-gray);
+  padding: 16px;
+}
+
+.answer-button {
+  background-color: var(--light-red);
+  color: var(--white);
+  border: none;
+  width: 100%;
+  padding: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }

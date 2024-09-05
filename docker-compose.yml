@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: got_quiz
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    container_name: next_app
+    restart: always
+    develop:
+      watch:
+        - action: sync
+          path: ./
+          target: /app
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/got_quiz
+      NEXTAUTH_URL: http://localhost:3000
+    depends_on:
+      - db
+    volumes:
+      - app:/app
+      - /app/node_modules
+    command: sh -c "npm install && npm run dev"
+
+volumes:
+  db_data:
+  app:
